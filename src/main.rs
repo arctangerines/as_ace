@@ -23,7 +23,7 @@ pub mod ace
             let mut next = self;
             for c in s.chars()
             {
-                // TODO: Investigate what next.insert() does
+                // NOTE: I... I was calling this function itself *facepalm*
                 next.child.insert(c, AceTrie::default());
                 next = match next.child.get_mut(&c)
                 {

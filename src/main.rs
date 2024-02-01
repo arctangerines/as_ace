@@ -1,3 +1,5 @@
+use ace::AceTrie;
+
 pub mod ace
 {
     use std::collections::HashMap;
@@ -23,7 +25,6 @@ pub mod ace
             let mut next = self;
             for c in s.chars()
             {
-                // NOTE: I... I was calling this function itself *facepalm*
                 next.child.insert(c, AceTrie::default());
                 next = match next.child.get_mut(&c)
                 {
@@ -60,9 +61,17 @@ pub mod ace
         /// and searching based on weight first
         fn suggest(&mut self)
         {
-            for x in b'a'..=b'z'
+            for x in 'a'..='z'
             {
-                println!("{}", x as char);
+                match self.child.contains_key(&x)
+                {
+                    true =>
+                    {
+                        println!("{} found", x);
+                        break;
+                    }
+                    false => println!("{}", x),
+                }
             }
         }
         // TODO: A function that explores the tree literally

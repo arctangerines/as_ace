@@ -45,7 +45,7 @@ pub mod ace
                 {
                     Some(x) => next = x,
                     // This is where we go to start suggesting/correcting
-                    None => break,
+                    None => next.suggest(),
                 }
             }
         }

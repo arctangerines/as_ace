@@ -49,6 +49,21 @@ pub mod ace
                 }
             }
         }
+        /// NOTE: The implementation FOR NOW will be terrible
+        /// Im going to loop through the alphabet and hope for a match
+        /// Later on I will actually use my idea of assigning weight to keys
+        /// and searching based on weight first
+        fn suggest(&mut self)
+        {
+            for x in b'a'..=b'z'
+            {
+                println!("{}", x as char);
+            }
+        }
+        // TODO: A function that explores the tree literally
+        pub fn explore(&mut self)
+        {
+        }
     }
 }
 

@@ -41,11 +41,16 @@ pub mod ace
             let mut next = self;
             for c in s.chars()
             {
-                match next.child.get_mut(&c)
+                match next.child.contains_key(&c)
                 {
-                    Some(x) => next = x,
-                    // This is where we go to start suggesting/correcting
-                    None => next.suggest(),
+                    true =>
+                    {
+                        next = next
+                            .child
+                            .get_mut(&c)
+                            .expect("Somehow key wasnt matched?")
+                    }
+                    false => next.suggest(),
                 }
             }
         }

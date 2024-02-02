@@ -2,7 +2,31 @@ use ace::AceTrie;
 
 pub mod ace
 {
-    use std::collections::HashMap;
+    use std::{collections::HashMap, hash::Hash};
+
+    pub struct KeyWeights
+    {
+        /// The letters should be already ordered from
+        /// heaviest to lightest so we can just
+        /// loop through it, we can make a
+        /// we can make this an array later on 
+        /// but for now it should be a vector
+        weight: HashMap<char, Vec<u8>>,
+    }
+
+    enum KeyboardRow
+    {
+        R1,
+        R2,
+        R3,
+    }
+    impl KeyWeights
+    {
+        pub fn new() -> Self
+        {
+            KeyWeights { weight: HashMap::new() }
+        }
+    }
 
     pub struct AceTrie
     {

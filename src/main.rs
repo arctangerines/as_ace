@@ -9,9 +9,9 @@ pub mod ace
         /// The letters should be already ordered from
         /// heaviest to lightest so we can just
         /// loop through it, we can make a
-        /// we can make this an array later on 
+        /// we can make this an array later on
         /// but for now it should be a vector
-        weight: HashMap<char, Vec<u8>>,
+        weight: HashMap<char, KeyData>,
     }
 
     enum KeyboardRow
@@ -20,11 +20,20 @@ pub mod ace
         R2,
         R3,
     }
+    pub struct KeyData
+    {
+        row: KeyboardRow,
+        idx: u8,
+        p_weight: Vec<u8>,
+    }
+
     impl KeyWeights
     {
         pub fn new() -> Self
         {
-            KeyWeights { weight: HashMap::new() }
+            KeyWeights {
+                weight: HashMap::new(),
+            }
         }
     }
 
